@@ -1,24 +1,37 @@
-
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
 
+# Telegram
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+
+# Groq
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-WEBHOOK_URL = os.getenv("WEBHOOK_URL")  # Railway Public URL
+# Optional APIs
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+OPENWEATHER_API = os.getenv("OPENWEATHER_API", "")
+OMDB_API = os.getenv("OMDB_API", "")
 
+# Dashboard Login
 DASHBOARD_USER = os.getenv("DASHBOARD_USER", "admin")
 DASHBOARD_PASS = os.getenv("DASHBOARD_PASS", "changeme")
 
-FLASK_SECRET = os.getenv("FLASK_SECRET", "secret")
-PORT = int(os.getenv("PORT", 8000))
+# Flask Session Secret
+FLASK_SECRET = os.getenv("FLASK_SECRET", "supersecret123")
 
-DATA_DIR = os.path.join(os.getcwd(), "data")
-TEMP_DIR = os.path.join(DATA_DIR, "temp")
+# PORT Railway gives (mandatory)
+PORT = int(os.getenv("PORT", 8080))
+
+# DATA PATH
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(BASE_DIR, "data")
 DB_PATH = os.path.join(DATA_DIR, "bot_data.db")
 
-os.makedirs(DATA_DIR, exist_ok=True)
-os.makedirs(TEMP_DIR, exist_ok=True)
+# Webhook Public URL
+# Railway automatically exposes: https://your-app-name.up.railway.app
+WEBHOOK_URL = os.getenv("WEBHOOK_URL")  # MUST be set after deployment
+
+# Vosk STT model path
+VOSK_MODEL_PATH = os.getenv("VOSK_MODEL_PATH", "vosk-model-small-en-us-0.15")
