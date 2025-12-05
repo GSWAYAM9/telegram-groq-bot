@@ -1,12 +1,11 @@
-
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 
 
 def main_menu():
     return InlineKeyboardMarkup([
         [InlineKeyboardButton("💬 AI Chat", callback_data="ai")],
         [InlineKeyboardButton("🎙 Voice Input", callback_data="voice")],
-        [InlineKeyboardButton("🖼 Image", callback_data="image")],
+        [InlineKeyboardButton("🖼 Image Gen", callback_data="image")],
         [InlineKeyboardButton("📝 Tasks", callback_data="tasks")],
         [InlineKeyboardButton("🎭 Persona", callback_data="persona")],
         [InlineKeyboardButton("ℹ Help", callback_data="help")]
